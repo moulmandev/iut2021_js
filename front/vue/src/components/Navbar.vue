@@ -12,11 +12,11 @@
       </div>
 
       <v-spacer></v-spacer>
-      <v-btn v-on:click="goToLogin"
+      <v-btn v-on:click="loginBtn"
       depressed
       color="#131921"
       >
-        Login
+      {{ textBtn }}
       </v-btn>
 
       <v-btn
@@ -34,13 +34,21 @@
 <script>
 import router from '../router'
 export default {
+  data(){
+    return {
+      textBtn: ( sessionStorage.getItem('isConnected') == false )? "Connexion" : "Déconnexion",
+    }
+  },
   methods: {
-    goToLogin: function (){
+    loginBtn: function (){
+      if (sessionStorage.getItem('isConnected') == true){
+        sessionStorage.setItem('isConnected', false);
+      }
       router.push({name: "Login"});
     },
     goToMenu: function (){
       router.push({name: "Home"});
-    }
+    },
   }
 }
 </script>

@@ -57,6 +57,7 @@
 </template>
 
 <script>
+  import router from '../router'
   export default {
     data: () => ({
       valid: true,
@@ -80,7 +81,10 @@
 
     methods: {
       validate () {
-        this.$refs.form.validate()
+        this.$refs.form.validate();
+        //TODO connection validation
+        sessionStorage.setItem('isConnected', true);
+        router.push({name: "Home"});
       },
       reset () {
         this.$refs.form.reset()
