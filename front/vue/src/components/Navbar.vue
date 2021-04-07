@@ -12,6 +12,13 @@
       </div>
 
       <v-spacer></v-spacer>
+      <v-btn v-on:click="addBtn"
+      depressed
+      color="#131921"
+      >
+      Ajouter un item
+      </v-btn>
+
       <v-btn v-on:click="loginBtn"
       depressed
       color="#131921"
@@ -49,6 +56,9 @@ export default {
     goToMenu: function (){
       router.push({name: "Home"});
     },
+    addBtn: function (){
+      router.push({name: "Add"});
+    }
   }
 }
 </script>

@@ -1,5 +1,5 @@
 <template>
-    <div class="w-50 center mt-10">
+    <div class="w-50 center mt-16">
         <v-form
             ref="form"
             v-model="valid"
@@ -46,12 +46,6 @@
             Reset Form
             </v-btn>
 
-            <v-btn
-            color="warning"
-            @click="resetValidation"
-            >
-            Reset Validation
-            </v-btn>
         </v-form>
     </div>
 </template>
