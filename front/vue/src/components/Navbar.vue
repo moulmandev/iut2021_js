@@ -36,7 +36,7 @@ import router from '../router'
 export default {
   data(){
     return {
-      textBtn: ( sessionStorage.getItem('isConnected') == false )? "Connexion" : "Déconnexion",
+      textBtn: ( sessionStorage.getItem('isConnected') == false )? "Déconnexion" : "Connexion",
     }
   },
   methods: {
