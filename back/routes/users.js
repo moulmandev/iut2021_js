@@ -1,6 +1,6 @@
 import express from 'express';
 import { User } from '../models/user.model.js';
-const bcrypt = require('bcrypt');
+import bcrypt from 'bcrypt';
 
 const router = express.Router();
 
@@ -12,7 +12,7 @@ router.get('/', function(req, res, next) {
 });
 
 router.post('/login',(req,res,next)=>{
-    res.status(200).json("toto")
+    //todo: login
 })
 
 router.post('/register',(req,res)=>{
