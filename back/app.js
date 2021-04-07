@@ -1,28 +1,28 @@
 import express from 'express';
-import path from 'path';
 import cookieParser from 'cookie-parser';
 import logger from 'morgan';
-import { dirname } from 'path';
-import { fileURLToPath } from 'url';
 
-import indexRouter from './routes/index.js';
-import todoRouter from './routes/todo.route.js';
+import index from './routes/index.js';
+import users from './routes/users.js';
 import mongoose from 'mongoose';
 import cors from 'cors';
 
 const app = express();
-const __dirname = dirname(fileURLToPath(import.meta.url));
+const port = 3030;
+
 app.use(logger('dev'));
 app.use(express.json());
 app.use(cors())
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter);
-app.use('/todos', todoRouter);
+app.use('/', index);
+app.use('/users', users);
 
-mongoose.connect('mongodb://localhost/test', {useNewUrlParser: true, useUnifiedTopology: true});
+app.listen(port, () => console.log('App is running'));
+
+
+mongoose.connect('mongodb+srv://root:GNjTGWjCJ4NjkyvV@cluster0.i41yt.mongodb.net/myFirstDatabase?retryWrites=true&w=majority', {useNewUrlParser: true, useUnifiedTopology: true});
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function() {
