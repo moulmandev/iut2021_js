@@ -10,9 +10,9 @@ router.get('/', function(req, res, next) {
 });
 
 router.post('/', (req, res, next) => {
-  console.log(req.body.name);
-  const Item = new Item({label: req.body.label, description: req.body.description, price: req.body.price})
-  Item.save().then(itemSaved => {
+  console.log(req.body)
+  const item = new Item({label: req.body.label, description: req.body.description, price: req.body.price})
+  item.save().then(itemSaved => {
     res.send(itemSaved)
   })
 });
