@@ -10,17 +10,18 @@
         </v-col>
         <v-col>
         <v-card-title>
-          {{ item.label }}
+          {{ item['label'] }}
         </v-card-title>
         <v-card-text>
           <!--div class="mb-5">
             {{ item.description }}
           </div-->
           <div>
-            {{ item.price }} €
+            {{ item['price'] }} €
           </div>
         </v-card-text>
         <v-btn
+        @click="show"
         color="warning">
           Voir plus
         </v-btn>
@@ -35,8 +36,26 @@
 export default {
   data() {
     return {
-      items:  this.$http.get('http://localhost:3000/'),
+      items: [],
     };
   },
+  methods: {
+    load: function(){
+      console.log('call')
+      this.$http.get('http://localhost:3000/').then(function(response){
+        if(response.status == "200"){
+          console.log(response);
+          this.items = response.body
+          console.log(this.items);
+          this.items.forEach(element => {
+            console.log(element['label'])
+          });
+        }
+      });
+    }
+  },
+  mounted: function(){
+    this.load();
+  }
 };
 </script>
