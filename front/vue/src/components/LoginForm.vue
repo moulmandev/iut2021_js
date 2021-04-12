@@ -62,6 +62,7 @@
         v => (v && v.length <= 10) || 'Name must be less than 10 characters',
       ],
       email: '',
+      password: '',
       emailRules: [
         v => !!v || 'E-mail is required',
         v => /.+@.+\..+/.test(v) || 'E-mail must be valid',
@@ -75,7 +76,13 @@
 
     methods: {
       validate () {
+        console.log(this.email);
+        console.log(this.password);
         this.$refs.form.validate();
+        console.log(this.$http.post('http://localhost:3000/user/login', {
+            email: this.email,
+            password: this.password
+        }));
         //TODO connection validation
         sessionStorage.setItem('isConnected', true);
         router.push({name: "Home"});
