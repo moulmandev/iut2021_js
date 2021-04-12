@@ -17,6 +17,7 @@ export const userSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    cart: Array,
     address: String
 });
 
